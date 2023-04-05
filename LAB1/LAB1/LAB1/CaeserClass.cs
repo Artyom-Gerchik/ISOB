@@ -4,41 +4,6 @@ namespace LAB1;
 
 public class CaeserClass
 {
-    public static string Encrypt(string? stringToEncrypt, int key)
-    {
-        key = key % 26;
-        var stringAsArray = stringToEncrypt.ToCharArray();
-        for (var index = 0; index < stringToEncrypt.Length; index++)
-            if (stringAsArray[index] != ' ' && stringAsArray[index] != ',' && stringAsArray[index] != '.'
-                && !char.IsDigit(stringAsArray[index]))
-            {
-                var tmp = stringAsArray[index] + key;
-                if (char.IsUpper(stringAsArray[index]))
-                {
-                    if (tmp >= 91)
-                        tmp = tmp % 91 + 'A';
-                    else
-                        tmp = tmp % 91;
-
-                    stringAsArray[index] = Convert.ToChar(tmp);
-                }
-                else if (char.IsLower(stringAsArray[index]))
-                {
-                    if (tmp >= 123)
-                        tmp = tmp % 123 + 'a';
-                    else
-                        tmp = tmp % 123;
-
-                    stringAsArray[index] = Convert.ToChar(tmp);
-                }
-            }
-
-        FileStream fs = File.OpenWrite("outputForCaesar.txt");
-        fs.Write(Encoding.Default.GetBytes(new string(stringAsArray)));
-        fs.Close();
-        return new string(stringAsArray);
-    }
-
     public static string Decrypt(string? stringToDecrypt, int key)
     {
         key = key % 26;
@@ -104,8 +69,8 @@ public class CaeserClass
                     }
                 }
             }
-        
-        FileStream fs = File.OpenWrite("inputForCaesar.txt");
+
+        var fs = File.OpenWrite("inputForCaesar.txt");
         fs.Write(Encoding.Default.GetBytes(new string(stringAsArray)));
         fs.Close();
 
