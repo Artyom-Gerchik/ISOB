@@ -19,9 +19,8 @@ public class VigenereClass
                     stringAsArray[index] = Convert.ToChar((stringAsArray[index] + keyAsArray[index]) % 26 + 97);
             }
 
-        var fs = File.OpenWrite("outputForVigenere.txt");
-        fs.Write(Encoding.Default.GetBytes(new string(stringAsArray)));
-        fs.Close();
+        qwerty.dfgdfgdfgdfgdfgdfgdfgdfgfd("outputForVigenere.txt", new string(stringAsArray));
+
 
         return new string(stringAsArray);
     }
